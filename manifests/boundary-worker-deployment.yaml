@@ -25,7 +25,11 @@ spec:
         - name: config
           mountPath: /boundary/boundary-worker.hcl
           subPath: boundary-worker.hcl
+        - name: auth
+          mountPath: /boundary/auth
       volumes:
       - name: config
         configMap:
           name: boundary-worker-config
+      - name: auth
+        emptyDir: {}
