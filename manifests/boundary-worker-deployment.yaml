@@ -19,7 +19,7 @@ spec:
         command:
           - boundary
         args:
-          - worker
+          - server
           - -config=/boundary/boundary-worker.hcl
         volumeMounts:
         - name: config
