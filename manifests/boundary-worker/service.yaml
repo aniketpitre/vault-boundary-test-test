@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: boundary-worker
+  namespace: aniket-test
+spec:
+  selector:
+    app: boundary-worker
+  ports:
+  - port: 9202

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boundary-controller
+  namespace: aniket-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boundary-controller
+  template:
+    metadata:
+      labels:
+        app: boundary-controller
+    spec:
+      containers:
+      - name: boundary
+        image: hashicorp/boundary:0.15
+        args: ["server", "-config=/boundary/boundary.hcl"]
+        ports:
+        - containerPort: 9200
+        - containerPort: 9201
+        volumeMounts:
+        - name: config
+          mountPath: /boundary
+      volumes:
+      - name: config
+        configMap:
+          name: boundary-config

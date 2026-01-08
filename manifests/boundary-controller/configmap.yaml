@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: boundary-config
+  namespace: aniket-test
+data:
+  boundary.hcl: |
+    disable_mlock = true
+
+    controller {
+      name = "k8s-controller"
+      database {
+        url = "postgresql://boundary:boundarypass@boundary-postgres:5432/boundary?sslmode=disable"
+      }
+    }
+
+    listener "tcp" {
+      address = "0.0.0.0:9200"
+      purpose = "api"
+      tls_disable = true
+    }
+
+    listener "tcp" {
+      address = "0.0.0.0:9201"
+      purpose = "cluster"
+      tls_disable = true
+    }

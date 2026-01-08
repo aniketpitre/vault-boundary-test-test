@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: boundary
+  namespace: aniket-test
+spec:
+  selector:
+    app: boundary-controller
+  ports:
+  - name: api
+    port: 9200
+    targetPort: 9200

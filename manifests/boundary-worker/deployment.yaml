@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boundary-worker
+  namespace: aniket-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boundary-worker
+  template:
+    metadata:
+      labels:
+        app: boundary-worker
+    spec:
+      containers:
+      - name: boundary-worker
+        image: hashicorp/boundary:0.15
+        args: ["worker"]
+        env:
+        - name: BOUNDARY_ADDR
+          value: http://boundary:9200
