@@ -16,6 +16,8 @@ spec:
       containers:
       - name: boundary-worker
         image: hashicorp/boundary:0.15
+        command:
+          - boundary
         args:
           - worker
           - -config=/boundary/boundary-worker.hcl
