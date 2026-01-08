@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: boundary-db-migrate
+  namespace: aniket-test
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: migrate
+          image: hashicorp/boundary:0.17.1
+          command:
+            - boundary
+            - database
+            - migrate
+            - -config
+            - /boundary/boundary.hcl
+          volumeMounts:
+            - name: boundary-config
+              mountPath: /boundary
+      volumes:
+        - name: boundary-config
+          configMap:
+            name: boundary-config
