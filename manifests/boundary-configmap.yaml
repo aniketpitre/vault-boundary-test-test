@@ -30,5 +30,4 @@ data:
     listener "tcp" {
       address = "0.0.0.0:9201"
       purpose = "cluster"
-      tls_disable = true
     }
