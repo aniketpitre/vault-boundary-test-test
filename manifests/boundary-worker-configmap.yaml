@@ -8,10 +8,7 @@ data:
     disable_mlock = true
 
     worker {
-      name = "k8s-worker"
       controllers = ["http://boundary:9200"]
-
-      # REQUIRED: where the worker stores its auth credentials
       auth_storage_path = "/boundary/auth"
     }
 
