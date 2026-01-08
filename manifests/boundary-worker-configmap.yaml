@@ -8,11 +8,11 @@ data:
     disable_mlock = true
 
     worker {
-      name = "k8s-pki-worker"
-      public_addr = "boundary-worker.aniket-test.svc.cluster.local:9202"
-
       initial_upstreams = ["boundary:9201"]
       auth_storage_path = "/boundary/auth"
+
+      # ACTIVATION TOKEN (one-time use)
+      controller_generated_activation_token = "neslat_2KrcoF2mmddVVoYeLykXLzF2Vr64R3hQrkvj3sVZQBp8mY3qafxKShjwcAprQJ9DUQZf8kEEDoffP22NhYKzh3Cr3TLXP"
     }
 
     listener "tcp" {
