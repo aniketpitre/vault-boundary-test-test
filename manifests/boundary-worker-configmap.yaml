@@ -8,6 +8,9 @@ data:
     disable_mlock = true
 
     worker {
+      name = "k8s-pki-worker"
+      public_addr = "boundary-worker.aniket-test.svc.cluster.local:9202"
+
       initial_upstreams = ["boundary:9201"]
       auth_storage_path = "/boundary/auth"
     }
