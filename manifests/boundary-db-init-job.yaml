@@ -17,9 +17,10 @@ spec:
           - init
           - -config=/boundary/boundary.hcl
         volumeMounts:
-        - name: config
-          mountPath: /boundary
+        - name: boundary-config
+          mountPath: /boundary/boundary.hcl
+          subPath: boundary.hcl
       volumes:
-      - name: config
+      - name: boundary-config
         configMap:
           name: boundary-config
