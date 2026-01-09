@@ -16,9 +16,6 @@ data:
 
     controller {
       name = "k8s-controller"
-
-      public_addr = "boundary:9201"   # ✅ THIS FIXES THE 0.0.0.0 ERRORS
-
       database {
         url = "postgresql://boundary:boundarypass@boundary-postgres:5432/boundary?sslmode=disable"
       }
@@ -31,7 +28,9 @@ data:
     }
 
     listener "tcp" {
-      address = "0.0.0.0:9201"
-      purpose = "cluster"
+      address     = "0.0.0.0:9201"
+      purpose     = "cluster"
       tls_disable = true
+
+      public_addr = "boundary:9201"   # ✅ THIS IS THE ONLY PLACE IT WORKS
     }
