@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: boundary
-        image: hashicorp/boundary:0.17.1
+        image: hashicorp/boundary:0.21.0
         args:
           - server
           - -config=/boundary/boundary.hcl

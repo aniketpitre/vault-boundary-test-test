@@ -10,7 +10,7 @@ spec:
       restartPolicy: OnFailure
       containers:
       - name: boundary-init
-        image: hashicorp/boundary:0.15
+        image: hashicorp/boundary:0.21.0
         command:
           - boundary
           - database
