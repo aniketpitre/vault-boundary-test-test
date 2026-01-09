@@ -4,7 +4,7 @@ metadata:
   name: boundary-worker
   namespace: aniket-test
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: boundary-worker
